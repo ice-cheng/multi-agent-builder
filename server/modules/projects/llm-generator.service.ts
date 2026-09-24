@@ -5,7 +5,10 @@ import * as path from 'path';
 import type { AgentLogEntry, AppStyle, BrandKit } from '@shared/api.interface';
 
 const ARK_BASE_URL = process.env.ARK_BASE_URL || 'https://ark.cn-beijing.volces.com/api/v3';
-const ARK_API_KEY = process.env.ARK_API_KEY || '7c391e92-86ac-4db5-9e53-e96fedc7a1c2';
+const ARK_API_KEY = process.env.ARK_API_KEY;
+if (!ARK_API_KEY) {
+  console.warn('[llm-generator] WARNING: ARK_API_KEY environment variable is not set. LLM features will not work.');
+}
 const ARK_TEMPERATURE = 0.7;
 const ARK_MAX_TOKENS = 1500;
 const PM_MAX_TOKENS = 500;
